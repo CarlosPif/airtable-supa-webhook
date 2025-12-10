@@ -2,17 +2,17 @@ import express, { Request, Response } from "express";
 import { Pool } from "pg";
 
 // ========= ENV =========
-const DATABASE_URL = process.env.DATABASE_URL;
+const SUPABASE_URL = process.env.DATABASE_URL;
 const PG_TABLE_NAME = process.env.PG_TABLE_NAME || "airtable_contacts";
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET; // opcional
 
-if (!DATABASE_URL) {
+if (!SUPABASE_URL) {
     console.error("DATABASE_URL is not set");
     process.exit(1);
 }
 
 const pool = new Pool({
-    connectionString: DATABASE_URL,
+    connectionString: SUPABASE_URL,
 });
 
 const app = express();
